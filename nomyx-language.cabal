@@ -1,4 +1,4 @@
-name: Nomyx-Language
+name: nomyx-language
 version: 1.0.0
 cabal-version: >=1.8
 build-type: Simple
@@ -61,5 +61,5 @@ library
 
 source-repository head
   type:              git
-  location:          https://github.com/cdupont/Nomyx.git
+  location:          https://github.com/cdupont/nomyx-language.git
 
