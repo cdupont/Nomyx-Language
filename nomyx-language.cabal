@@ -24,7 +24,7 @@ data-files: src/Nomyx/Language.hs
             src/Nomyx/Language/Players.hs
             src/Nomyx/Language/Utils.hs
 data-dir: .
-extra-source-files: AUTHORS README
+extra-source-files: AUTHORS README.md
 
 library
     build-depends: DebugTraceHelpers  == 0.12.*,
@@ -41,8 +41,8 @@ library
                    text,
                    time-recurrence    == 0.9.*,
                    monad-loops        == 0.4.*,
-                   Imprevu,
-                   shortcut
+                   imprevu            == 0.1.*,
+                   shortcut           == 0.1.*
     exposed-modules: Nomyx.Language
                      Nomyx.Language.Types
                      Nomyx.Language.Inputs
@@ -53,7 +53,7 @@ library
                      Nomyx.Language.Events
                      Nomyx.Language.Variables
                      Nomyx.Language.Utils
-                     Paths_Nomyx_Language
+                     Paths_nomyx_language
     exposed: True
     buildable: True
     hs-source-dirs: src
