@@ -1,7 +1,7 @@
 flags: {}
 packages:
 - '.'
-- location: ../Imprevu
+- location: ../imprevu
   extra-dep: true
 - location: ../shortcut
   extra-dep: true
@@ -9,4 +9,4 @@ extra-deps:
 - DebugTraceHelpers-0.12
 - time-recurrence-0.9.2
 - NoTrace-0.3.0.1
-resolver: lts-5.11
+resolver: lts-7.14
