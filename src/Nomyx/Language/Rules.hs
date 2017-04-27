@@ -73,7 +73,7 @@ getRule rn = do
 getRulesByNumbers :: [RuleNumber] -> Nomex [RuleInfo]
 getRulesByNumbers = mapMaybeM getRule
 
-getRuleFuncs :: Nomex [Nomex ()]
+getRuleFuncs :: Nomex [Rule]
 getRuleFuncs = map _rRule <$> getRules
 
 -- | add a rule to the game, it will have to be activated
