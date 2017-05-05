@@ -44,7 +44,7 @@ data Nomex a  where
    --Events management
    OnEvent         :: (Typeable e, Show e) => Event e -> ((EventNumber, e) -> Nomex ()) -> Nomex EventNumber
    DelEvent        :: EventNumber -> Nomex Bool
-   GetEventResults :: (Typeable a, Show a) => EventNumber -> [Event a] -> Nomex [Maybe a]
+   GetEventResult  :: (Typeable a, Show a) => EventNumber -> Event a -> Nomex (Maybe a)
    SendMessage     :: (Typeable a, Show a) => Msg a -> a -> Nomex ()
    --Rules management
    ProposeRule     :: RuleInfo -> Nomex Bool
@@ -102,7 +102,7 @@ instance EvMgt Nomex where
    onEvent         = OnEvent
    delEvent        = DelEvent
    sendMessage     = SendMessage
-   getEventResults = GetEventResults
+   getEventResult  = GetEventResult
 
 instance SysMgt Nomex where
    getCurrentTime  = GetCurrentTime
