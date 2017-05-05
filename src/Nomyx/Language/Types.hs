@@ -44,7 +44,7 @@ data Nomex a  where
    --Events management
    OnEvent         :: (Typeable e, Show e) => Event e -> ((EventNumber, e) -> Nomex ()) -> Nomex EventNumber
    DelEvent        :: EventNumber -> Nomex Bool
-   GetEvents       :: Nomex [EventInfo]
+   GetEventResults :: (Typeable a, Show a) => EventNumber -> [Event a] -> Nomex [Maybe a]
    SendMessage     :: (Typeable a, Show a) => Msg a -> a -> Nomex ()
    --Rules management
    ProposeRule     :: RuleInfo -> Nomex Bool
@@ -101,8 +101,8 @@ instance MonadError String Nomex where
 instance EvMgt Nomex where
    onEvent         = OnEvent
    delEvent        = DelEvent
-   getEvents       = GetEvents
    sendMessage     = SendMessage
+   getEventResults = GetEventResults
 
 instance SysMgt Nomex where
    getCurrentTime  = GetCurrentTime

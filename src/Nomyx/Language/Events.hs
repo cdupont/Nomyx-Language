@@ -5,8 +5,7 @@
 module Nomyx.Language.Events (
    onEvent, onEvent_, onEventOnce,
    delEvent,
-   getEvents,
-   getIntermediateResults,
+   getEventResults,
    schedule, schedule_, schedule', --schedule'_,
    getCurrentTime,
    oneWeek, oneDay, oneHour, oneMinute,
@@ -44,11 +43,8 @@ onEventOnce = Imp.onEventOnce
 delEvent :: EventNumber -> Nomex Bool
 delEvent = Imp.delEvent
 
-getEvents :: Nomex [EventInfo]
-getEvents = Imp.getEvents
-
-getIntermediateResults :: EventNumber -> Nomex (Maybe [(PlayerNumber, SomeData)])
-getIntermediateResults = Imp.getIntermediateResults
+getEventResults :: (Typeable a, Show a) => EventNumber -> [Event a] -> Nomex [Maybe a]
+getEventResults = Imp.getEventResults
 
 -- | on the provided schedule, the supplied function will be called
 schedule :: Schedule Freq -> (UTCTime -> Nomex ()) -> Nomex ()
