@@ -6,11 +6,10 @@ module Nomyx.Language.Events (
    onEvent, onEvent_, onEventOnce,
    delEvent,
    getEventResult,
-   schedule, schedule_, schedule', --schedule'_,
+   isEventActive,
+   schedule, schedule_, schedule',
    getCurrentTime,
    oneWeek, oneDay, oneHour, oneMinute,
-   --timeEvent, messageEvent, victoryEvent, playerEvent, ruleEvent,
-   --signalEvent, inputFormSignal,
    liftEvent,
    victoryEvent, timeEvent,
    Imprevu.EventNumber,
@@ -40,9 +39,15 @@ onEvent_ = Imp.onEvent_
 onEventOnce :: (Typeable e, Show e) => Event e -> (e -> Nomex ()) -> Nomex EventNumber
 onEventOnce = Imp.onEventOnce
 
+-- | delete an event
 delEvent :: EventNumber -> Nomex Bool
 delEvent = Imp.delEvent
 
+-- | verify if an event exists and is active
+isEventActive :: EventNumber -> Nomex Bool
+isEventActive = Imp.isEventActive
+
+-- | get the results already available from an event
 getEventResult :: (Typeable a, Show a) => EventNumber -> Event a -> Nomex (Maybe a)
 getEventResult = Imp.getEventResult
 
@@ -56,9 +61,6 @@ schedule_ = Imp.schedule_
 --at each time provided, the supplied function will be called
 schedule' :: [UTCTime] -> (UTCTime -> Nomex ()) -> Nomex ()
 schedule' = Imp.schedule'
-
---schedule'_ :: [UTCTime] -> Nomex () -> Nomex ()
---schedule'_ ts f = schedule' ts (const f)
 
 -- | get the current time as UTCTime
 getCurrentTime :: Nomex UTCTime

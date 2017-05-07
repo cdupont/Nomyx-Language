@@ -43,9 +43,10 @@ data Nomex a  where
    DelVar          :: (V a) -> Nomex Bool
    --Events management
    OnEvent         :: (Typeable e, Show e) => Event e -> ((EventNumber, e) -> Nomex ()) -> Nomex EventNumber
-   DelEvent        :: EventNumber -> Nomex Bool
-   GetEventResult  :: (Typeable a, Show a) => EventNumber -> Event a -> Nomex (Maybe a)
    SendMessage     :: (Typeable a, Show a) => Msg a -> a -> Nomex ()
+   DelEvent        :: EventNumber -> Nomex Bool
+   IsEventActive   :: EventNumber -> Nomex Bool
+   GetEventResult  :: (Typeable a, Show a) => EventNumber -> Event a -> Nomex (Maybe a)
    --Rules management
    ProposeRule     :: RuleInfo -> Nomex Bool
    ActivateRule    :: RuleNumber -> Nomex Bool
