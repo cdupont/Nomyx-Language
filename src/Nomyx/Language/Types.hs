@@ -104,6 +104,7 @@ instance EvMgt Nomex where
    delEvent        = DelEvent
    sendMessage     = SendMessage
    getEventResult  = GetEventResult
+   isEventActive   = IsEventActive
 
 instance SysMgt Nomex where
    getCurrentTime  = GetCurrentTime

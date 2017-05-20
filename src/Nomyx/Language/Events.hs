@@ -14,7 +14,8 @@ module Nomyx.Language.Events (
    victoryEvent, timeEvent,
    Imprevu.EventNumber,
    SomeData,
-   Victory(..)
+   Victory(..),
+   Imp.Msg
    ) where
 
 import           Nomyx.Language.Types
@@ -71,6 +72,10 @@ getCurrentTime = GetCurrentTime
 -- | Build an event firing at a specific time
 timeEvent :: UTCTime -> Event UTCTime
 timeEvent = Imp.timeEvent
+
+-- | Build an event firing at a specific time
+messageEvent :: (Typeable a, Show a, Eq a) => Imp.Msg a -> Event a
+messageEvent = Imp.messageEvent
 
 data Victory = Victory
   deriving (Eq, Show)
